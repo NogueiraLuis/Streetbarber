@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(40, 40, 40, 0.944);
+}
+
+/*===== NAV =====*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.901);
+  color: #fff;
+  height: 5rem;
+  
+}
+
+.btn-agen {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+}
+
+.logo {
+    border-radius: 100%;
+}
+
+.lista-links {
+  display: flex;
+  gap: 5rem;
+  font-size: 1.5rem;
+}
+
+/* ===== HOME ===== */
+
+.sessoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40rem;
+}
+
+.slogan {
+    color: #fff;
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
 }
