@@ -1,9 +1,10 @@
 interface CardProps {
+    id: number,
     title: string,
     info: string
 }
 
-export default function CardServicos({ title, info }: CardProps) {
+export default function CardServicos({ title, info, id }: CardProps) {
     return (
         <div>
             <h2 className="title-servico">{title}</h2>
