@@ -85,8 +85,21 @@ body {
     color: #fff;
 }
 
-.info-servicos {
+.tipo-servicos {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
+
+.cardProduto{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title-servico {
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* =====  */

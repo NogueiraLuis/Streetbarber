@@ -106,19 +106,17 @@ export default function HomePage() {
           </div>
 
           <div className="container-servicos">
-            <section className="info-servicos">
+            <section className="tipo-servicos">
               {servicos.map((item) => (
                 <CardServicos
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                info={item.info}
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  info={item.info}
                 />
               ))}
             </section>
-            <section className="image-servicos">
-              Image
-            </section>
+            <section className="image-servicos">Image</section>
           </div>
         </section>
         <section className="equipe">a</section>

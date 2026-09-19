@@ -6,7 +6,7 @@ interface CardProps {
 
 export default function CardServicos({ title, info, id }: CardProps) {
     return (
-        <div>
+        <div className="cardProduto">
             <h2 className="title-servico">{title}</h2>
             <p className="info-servico">{info}</p>
         </div>
