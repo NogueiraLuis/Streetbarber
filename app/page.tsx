@@ -1,5 +1,4 @@
 import Image from "next/image";
-import meuLogo from "@/public/logo.png";
 import CardServicos from "@/components/servicos";
 import Link from "next/link";
 import { Limelight } from "next/font/google";
@@ -44,9 +43,10 @@ export default function HomePage() {
       <div className="header">
         <div className="logo" style={{ width: "4.5rem" }}>
           <Image
-            src={meuLogo}
+            src="/logo.png"
+            width={200}
+            height={300}
             alt="Logo da empresa"
-            placeholder="blur"
             className="logo"
           />
         </div>
@@ -116,11 +116,57 @@ export default function HomePage() {
                 />
               ))}
             </section>
-            <section className="image-servicos">Image</section>
+            <section className="image-servicos">
+              <Image
+              className="servico-img"
+              src="/servico-img.jpg"
+              width={350}
+              height={100}
+              alt="barbeiro"/>
+            </section>
           </div>
         </section>
-        <section className="equipe">a</section>
-        <section className="unidade">a</section>
+        <section className="equipe">
+          <div>
+            <Image
+              src="/title-equipe.png"
+              width={600}
+              height={400}
+              alt="Equipe"
+            />
+          </div>
+
+          <section className="barbeiros">
+            <Image
+              src="/barbeiros.png"
+              width={800}
+              height={400}
+              alt="barbeiros"
+            />
+          </section>
+        </section>
+        <section className="unidade">
+          <div>
+            <Image 
+            src="/title-unidade.png"
+            width={600}
+            height={400}
+            alt="Nossa Unidade" />
+          </div>
+
+          <section className="unidade-local-img">
+            <Image 
+            className="local-img"
+            src="/und-local.png"
+            width={350}
+            height={500}
+            alt="Unidade Local" />
+
+            <div className="social-midia">
+
+            </div>
+          </section>
+        </section>
       </div>
     </main>
   );

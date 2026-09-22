@@ -1,16 +1,23 @@
 @import "tailwindcss";
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: rgba(40, 40, 40, 0.944);
+  margin: 0;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(18, 18, 18, 0.825), rgba(0, 0, 0, 0.85)),
+    url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0zMy1jaGltLTE4LWItYnJpY2tfMC5qcGc.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-/*===== NAV =====*/
+/* ===== NAV ===== */
 
 .header {
   display: flex;
@@ -19,20 +26,21 @@ body {
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.901);
   color: #fff;
-  height: 5rem;
-  
+  height: 6rem;
+  position: fixed;
+  width: 100%;
 }
 
 .btn-agen {
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff;
-    color: black;
-    cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: black;
+  cursor: pointer;
 }
 
 .logo {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 
 .lista-links {
@@ -44,62 +52,98 @@ body {
 /* ===== HOME ===== */
 
 .sessoes {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 }
 
 .home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 40rem;
 }
 
 .slogan {
-    color: #fff;
-    display: flex;
-    font-size: 1.5rem;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 2rem;
+  color: #fff;
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /* ===== SERVICOS ===== */
 
 .servicos {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    align-items: center;
-    
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
 }
 
-.container-servicos{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 2rem 5rem ;
-    color: #fff;
+.container-servicos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 5rem;
+  color: #fff;
 }
 
 .tipo-servicos {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: rgba(0, 0, 0, 0.368);
+  border-radius: 5%;
+  padding: 20px;
 }
 
-.cardProduto{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.cardProduto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .title-servico {
-    font-size: larger;
-    font-weight: bold;
+  font-size: larger;
+  font-weight: bold;
 }
 
-/* =====  */
+.image-servicos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.servico-img {
+  border-radius: 10%;
+  min-width: 100%;
+  max-height: 100%;
+}
+
+/* ===== EQUIPE ===== */
+
+.equipe {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
+  gap: 5rem 0;
+}
+
+/* ===== UNIDADE ===== */
+
+.unidade {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  align-items: center;
+  gap: 3rem 0;
+  padding: 6rem;
+}
+
+.local-img {
+  border-radius: 10%;
+}
