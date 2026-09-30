@@ -34,7 +34,7 @@ body {
 .btn-agen {
   padding: 10px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(234, 218, 1, 0.738);
   color: black;
   cursor: pointer;
 }
@@ -47,6 +47,7 @@ body {
   display: flex;
   gap: 5rem;
   font-size: 1.5rem;
+  color: rgba(234, 218, 1, 0.738);
 }
 
 /* ===== HOME ===== */
@@ -86,41 +87,85 @@ body {
 
 .container-servicos {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   padding: 2rem 5rem;
   color: #fff;
+  min-height: max-content;
 }
 
 .tipo-servicos {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  background-color: rgba(0, 0, 0, 0.368);
-  border-radius: 5%;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.384);
+  border-radius: 25px;
+  padding: 30px;
+  width: 80%;
 }
 
 .cardProduto {
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.577);
+  border-radius: 15px;
+  padding: 15px;
   gap: 0.5rem;
+  width: 100%;
+  height: 100%;
 }
 
 .title-servico {
-  font-size: larger;
+  font-size: 25;
   font-weight: bold;
+  color: rgba(234, 218, 1, 0.738);
+}
+
+.info-servico {
+  font-size: 20;
 }
 
 .image-servicos {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50%;
+  height: 50%;
 }
 .servico-img {
   border-radius: 10%;
-  min-width: 100%;
-  max-height: 100%;
+  min-width: 50%;
+  min-height: 10%;
+}
+
+/* ===== GALERIA ===== */
+
+.galeria {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  height: 45rem;
+}
+
+.grade-fotos {
+  display: flex;
+  gap: 2rem;
+
+}
+
+.foto {
+  border-radius: 1.5rem;
+  box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+}
+
+.foto:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgb(234, 219, 1);
 }
 
 /* ===== EQUIPE ===== */
@@ -146,4 +191,50 @@ body {
 
 .local-img {
   border-radius: 10%;
+}
+
+/* ===== SOBRE NÓS ===== */
+
+.sobre-hero {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
+  gap: 3rem;
+}
+
+.sobre-conteudo {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 0 5rem;
+  height: 100%;
+  min-width: min-content;
+}
+
+.sobre-text {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  text-align: center;
+}
+
+.sobre-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr;
+  gap: 2rem;
+  width: 50%;
+}
+
+.text {
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+.img {
+  border-radius: 0.5rem;
+  min-width: 80%;
 }
