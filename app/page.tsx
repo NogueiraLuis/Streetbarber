@@ -87,7 +87,7 @@ export default function HomePage() {
         </nav>
 
         <button className={`btn-agen ${limeLight.className}`}>
-          Agendar Corte
+          <Link href='/agendamento'>Agendar corte</Link>
         </button>
       </div>
 

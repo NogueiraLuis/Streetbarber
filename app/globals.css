@@ -238,3 +238,48 @@ body {
   border-radius: 0.5rem;
   min-width: 80%;
 }
+
+/* ===== AGENDAMENTO ===== */
+
+.hero {
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(44, 44, 44, 0.411);
+  box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
+  width: 30rem;
+  gap: 5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: solid 1 rgba(234, 219, 1, 0.488);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.363);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.input-box, .select {
+  background-color: rgba(4, 4, 4, 0.968);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
