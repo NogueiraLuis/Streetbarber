@@ -61,7 +61,6 @@ const servicos = [
 ];
 
 export default function HomePage() {
-
   return (
     <main className="hero">
       <div className="header">
@@ -78,16 +77,13 @@ export default function HomePage() {
         <nav className="navegacao-principal">
           <ul className={`lista-links ${limeLight.className}`}>
             <li>
-              <Link href="/loja">Loja</Link>
-            </li>
-            <li>
-              <Link href="/sobre">Sobre</Link>
+              <Link href="/sobre">Sobre Nós</Link>
             </li>
           </ul>
         </nav>
 
         <button className={`btn-agen ${limeLight.className}`}>
-          <Link href='/agendamento'>Agendar corte</Link>
+          <Link href="/agendamento">Agendar corte</Link>
         </button>
       </div>
 
@@ -218,6 +214,37 @@ export default function HomePage() {
 
             <div className="social-midia"></div>
           </section>
+        </section>
+        <section className="footer">
+          <footer className="footer-container">
+            <div className="footer-content">
+              {/* Coluna 1: Marca */}
+              <div className="footer-col">
+                <h3 className="footer-title">STREET BARBERSHOP</h3>
+              </div>
+
+              {/* Coluna 3: Contacto */}
+              <div className="footer-col">
+                <h4>Contato</h4>
+                <p>📍 Rua Exemplo, 123 — Centro</p>
+                <p>📱 (00) 99999-9999</p>
+                <p>📸 @streetbarbershop</p>
+              </div>
+            </div>
+
+            {/* Linha Inferior */}
+            <div className="footer-bottom">
+              <p>
+                &copy; {new Date().getFullYear()} Street Barbershop. Todos os
+                direitos reservados.
+              </p>
+
+              {/* Link discreto do Admin */}
+              <Link href="/admin" className="admin-link">
+                Área do Barbeiro 🔒
+              </Link>
+            </div>
+          </footer>
         </section>
       </div>
     </main>

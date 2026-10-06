@@ -33,36 +33,6 @@ export default function SobrePage() {
             avaliação no Google.
           </p>
         </section>
-        <section className="sobre-img">
-          <Image
-            src="/sobre-nos/sobre-area.png"
-            width={300}
-            height={300}
-            alt=""
-            className="img"
-          />
-          <Image
-            src="/sobre-nos/sobre-ex2.png"
-            width={300}
-            height={300}
-            alt=""
-            className="img"
-          />
-          <Image
-            src="/sobre-nos/sobre-ex3.jpg"
-            width={300}
-            height={300}
-            alt=""
-            className="img"
-          />
-          <Image
-            src="/sobre-nos/sobre-ex1.jpg"
-            width={300}
-            height={300}
-            alt=""
-            className="img"
-          />
-        </section>
       </div>
     </main>
   );

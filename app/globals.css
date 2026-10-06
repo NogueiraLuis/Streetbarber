@@ -47,7 +47,15 @@ body {
   display: flex;
   gap: 5rem;
   font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: 0.1s;
+  box-shadow: 3 4 10px rgba(234, 218, 1, 0.738);
   color: rgba(234, 218, 1, 0.738);
+}
+
+.lista-links:hover {
+   border: solid 2 rgba(234, 219, 1, 0.488);
 }
 
 /* ===== HOME ===== */
@@ -152,14 +160,15 @@ body {
 .grade-fotos {
   display: flex;
   gap: 2rem;
-
 }
 
 .foto {
   border-radius: 1.5rem;
   box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   object-fit: cover;
 }
 
@@ -207,7 +216,7 @@ body {
 
 .sobre-conteudo {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 4rem;
   padding: 0 5rem;
   height: 100%;
@@ -216,17 +225,9 @@ body {
 
 .sobre-text {
   display: flex;
-  width: 50%;
+  width: 100%;
   justify-content: center;
   text-align: center;
-}
-
-.sobre-img {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr;
-  gap: 2rem;
-  width: 50%;
 }
 
 .text {
@@ -234,14 +235,9 @@ body {
   text-align: justify;
 }
 
-.img {
-  border-radius: 0.5rem;
-  min-width: 80%;
-}
-
 /* ===== AGENDAMENTO ===== */
 
-.hero {
+.agen-hero {
   min-height: 100vh;
   color: #fff;
   display: flex;
@@ -251,7 +247,7 @@ body {
   padding: 4rem;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   background-color: rgba(44, 44, 44, 0.411);
@@ -270,9 +266,11 @@ form{
   background-color: rgba(0, 0, 0, 0.363);
   padding: 0.5rem;
   border-radius: 0.5rem;
+  box-shadow: 2 1 5px rgba(141, 132, 1, 0.738);
 }
 
-.input-box, .select {
+.input-box,
+.select {
   background-color: rgba(4, 4, 4, 0.968);
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -282,4 +280,42 @@ form{
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit {
+  background-color: black;
+  border: solid 1 rgba(234, 219, 1, 0.488);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 10rem;
+  padding: 0.4rem;
+}
+
+.btn-submit:hover {
+  box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  color: #9292926b;
+  background-color:rgb(7, 7, 7);
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
