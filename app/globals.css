@@ -34,7 +34,7 @@ body {
 .btn-agen {
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(234, 218, 1, 0.738);
+  background-color: rgba(209, 209, 209, 0.738);
   color: black;
   cursor: pointer;
 }
@@ -50,12 +50,12 @@ body {
   padding: 0.5rem;
   border-radius: 0.5rem;
   transition: 0.1s;
-  box-shadow: 3 4 10px rgba(234, 218, 1, 0.738);
-  color: rgba(234, 218, 1, 0.738);
+  box-shadow: 3 4 10px rgba(134, 134, 134, 0.738);
+  color: rgba(255, 255, 255, 0.738);
 }
 
 .lista-links:hover {
-   border: solid 2 rgba(234, 219, 1, 0.488);
+  border: solid 2 rgba(56, 56, 56, 0.738);
 }
 
 /* ===== HOME ===== */
@@ -308,8 +308,8 @@ form {
   display: flex;
   padding: 0.5rem;
   align-items: center;
-  color: #9292926b;
-  background-color:rgb(7, 7, 7);
+  color: #ffffff9a;
+  background-color: rgb(7, 7, 7);
   width: 100%;
 }
 
@@ -319,3 +319,49 @@ form {
   justify-content: space-evenly;
   width: 100%;
 }
+
+/* ===== ADMIN ===== */
+
+.admin-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  color: #fff;
+}
+
+.agen-container {
+  display: flex;
+  width: 80%;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.334);
+}
+
+.table-agen {
+  width: 100%;
+}
+
+.card-agen {
+  background-color: #6a6a6a5a;
+  border-radius: 1rem;
+}
+
+.td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputs-agen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
