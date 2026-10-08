@@ -89,7 +89,7 @@ export default function AgenPage() {
       <header>
         <strong>AGENDAMENTO</strong>
       </header>
-      <form onSubmit={handleSubmit}>
+      <form className="form-agen" onSubmit={handleSubmit}>
         <section className="inputs-container">
           {/* NOME */}
           <div className="inputs">

@@ -247,7 +247,7 @@ body {
   padding: 4rem;
 }
 
-form {
+.form-agen {
   display: flex;
   flex-direction: column;
   background-color: rgba(44, 44, 44, 0.411);
@@ -331,30 +331,79 @@ form {
   color: #fff;
 }
 
-.agen-container {
+.admin-title {
   display: flex;
-  width: 80%;
-  padding: 1rem;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  width: 50%;
+}
+
+.admin-title h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.agen-container {
+  width: 80%;
+  overflow-x: auto;
+  padding: 1rem;
   margin: 3rem 0;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.334);
 }
 
-.table-agen {
+.card-agen {
+  background-color: #6a6a6a15;
+  border-radius: 1rem;
   width: 100%;
 }
 
-.card-agen {
-  background-color: #6a6a6a5a;
-  border-radius: 1rem;
+tr:last-child td {
+  border-bottom: none;
 }
 
-.td {
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+}
+
+th,
+td {
+  padding: 20px 19px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  background-color: #000000;
+  color: #cacacb;
+  font-weight: 600;
+}
+
+.excluir-btn {
+  background-color: red;
+  padding: 0.5rem;
+  width: 3rem;
   display: flex;
+  cursor: pointer;
+  border-radius: 0.5rem;
   align-items: center;
   justify-content: center;
+}
+
+.editar-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  background-color: orange;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  height: 2.1rem;
 }
 
 .inputs-agen {
@@ -364,4 +413,85 @@ form {
   gap: 1rem;
 }
 
+/* ===== Modal ===== */
 
+/* 1. FUNDO ESCURO E COBERTURA TOTAL */
+.modal-overlay {
+  position: fixed; /* Fixa o elemento em relação à janela do navegador */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ocupa 100% da largura da tela */
+  height: 100vh; /* Ocupa 100% da altura da tela */
+  
+  /* Fundo preto com 75% de opacidade */
+  background-color: rgba(0, 0, 0, 0.75); 
+  
+  /* Efeito opcional de desfoque no conteúdo atrás do modal */
+  backdrop-filter: blur(4px); 
+
+  /* 2. CENTRALIZAÇÃO PERFEITA NO MEIO DA TELA */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+
+  /* 3. CAMADA SUPERIOR (Fica sobre todo o site) */
+  z-index: 9999; /* Valor alto para garantir que fique acima do header, footer e tabelas */
+}
+
+/* CAIXA DO MODAL */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e; /* Cor de fundo da caixa */
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 480px; /* Impede que fique gigante em monitores grandes */
+  
+  /* Sombra para destacar o modal do fundo escuro */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid #333;
+  
+  /* Animação suave de entrada */
+  animation: modalSurgir 0.2s ease-out;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 13rem;
+  gap: 1rem;
+}
+
+.input-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-modal input {
+  background-color: rgba(4, 4, 4, 0.968);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Animação simples de aparecimento */
+@keyframes modalSurgir {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
