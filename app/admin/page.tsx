@@ -1,25 +1,22 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
-import CardAgen from "@/components/cardAgendamentos";
-
-export interface Agendamento {
-  id: string;
-  nome_cliente: string;
-  email_cliente: string;
-  barbeiros: {
-    nome: string;
-  } | null;
-}
+import CardTable from "@/components/CardTable";
+import { Agendamento } from "@/src/types/agendamento";
+import TabelaAdmin from "@/components/TabelaAdmin";
 
 export default function AdminPage() {
   const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
+
   const [loading, setLoading] = useState(true);
 
   // Estado para controlar qual agendamento está sendo editado no Modal
-  const [agendamentoEditando, setAgendamentoEditando] = useState<Agendamento | null>(null);
+  const [agendamentoEditando, setAgendamentoEditando] =
+    useState<Agendamento | null>(null);
+
   const [novoNome, setNovoNome] = useState("");
+
   const [novoEmail, setNovoEmail] = useState("");
 
   // BUSCAR AGENDAMENTOS
@@ -43,13 +40,12 @@ export default function AdminPage() {
   // FUNÇÃO 1: EXCLUIR AGENDAMENTO
   // -------------------------------------------------------------
   const handleExcluir = async (id: string) => {
-    const confirmou = confirm("Tem certeza que deseja excluir este agendamento?");
+    const confirmou = confirm(
+      "Tem certeza que deseja excluir este agendamento?",
+    );
     if (!confirmou) return;
 
-    const { error } = await supabase
-      .from("agendamentos")
-      .delete()
-      .eq("id", id);
+    const { error } = await supabase.from("agendamentos").delete().eq("id", id);
 
     if (error) {
       alert("Erro ao excluir: " + error.message);
@@ -99,37 +95,32 @@ export default function AdminPage() {
   return (
     <main className="admin-hero">
       <header className="admin-title">
-        <h1>ADMINISTRAÇÃO</h1>
+        <h1>AGENDAMENTOS</h1>
       </header>
 
       <section className="agen-container">
-        {loading ? (
-          <p>Carregando...</p>
-        ) : (
-          <table className="table-agen">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Barbeiro</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {agendamentos.map((item) => (
-                <CardAgen
-                  key={item.id}
-                  id={item.id}
-                  nome_cliente={item.nome_cliente}
-                  email_cliente={item.email_cliente}
-                  barbeiros={item.barbeiros?.nome || "Não informado"}
-                  onExcluir={handleExcluir}
-                  onEditar={handleAbrirEdicao}
-                />
-              ))}
-            </tbody>
-          </table>
-        )}
+        {/* COMPONENTE REUTILIZÁVEL DE TABELA */}
+        <TabelaAdmin
+          colunas={["Nome", "Email", "Barbeiro", "Ações"]}
+          loading={loading}
+          vazio={agendamentos.length === 0}
+          mensagemVazio="Nenhum agendamento encontrado."
+        >
+          <TabelaAdmin colunas={["Nome", "Email", "Barbeiro", "Ações"]}>
+            {agendamentos.map((item) => (
+              <CardTable
+                key={item.id}
+                dados={[
+                  item.nome_cliente,
+                  item.email_cliente,
+                  item.barbeiros?.nome || "Não informado",
+                ]}
+                onEditar={() => handleAbrirEdicao(item.id)}
+                onExcluir={() => handleExcluir(item.id)}
+              />
+            ))}
+          </TabelaAdmin>
+        </TabelaAdmin>
       </section>
 
       {/* MODAL SIMPLES DE EDIÇÃO */}
@@ -138,9 +129,7 @@ export default function AdminPage() {
           <div className="modal-content">
             <h2>Editar Agendamento</h2>
             <form className="modal-form" onSubmit={handleSalvarEdicao}>
-
               <div className="input-modal">
-
                 <label>Nome:</label>
                 <input
                   type="text"
@@ -151,7 +140,6 @@ export default function AdminPage() {
               </div>
 
               <div className="input-modal">
-
                 <label>Email:</label>
                 <input
                   type="email"
@@ -161,9 +149,10 @@ export default function AdminPage() {
                 />
               </div>
 
-
               <div className="modal-buttons">
-                <button type="submit" className="btn-submit">Salvar</button>
+                <button type="submit" className="btn-submit">
+                  Salvar
+                </button>
                 <button
                   type="button"
                   className="btn-cancel"

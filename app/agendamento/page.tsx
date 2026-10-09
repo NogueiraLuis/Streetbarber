@@ -86,7 +86,7 @@ export default function AgenPage() {
   // 4. RETORNO DO JSX
   return (
     <main className="agen-hero">
-      <header>
+      <header className="agen-title">
         <strong>AGENDAMENTO</strong>
       </header>
       <form className="form-agen" onSubmit={handleSubmit}>

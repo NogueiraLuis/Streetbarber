@@ -96,7 +96,7 @@ body {
 .container-servicos {
   display: flex;
   justify-content: center;
-  width: 100%;
+  min-width: 100%;
   padding: 2rem 5rem;
   color: #fff;
   min-height: max-content;
@@ -109,7 +109,7 @@ body {
   background-color: rgba(0, 0, 0, 0.384);
   border-radius: 25px;
   padding: 30px;
-  width: 80%;
+  width: 100%;
 }
 
 .cardProduto {
@@ -244,14 +244,24 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  padding: 4rem;
+  padding: 2rem;
+}
+
+.agen-title {
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 40%;
+  text-align: center;
 }
 
 .form-agen {
   display: flex;
   flex-direction: column;
   background-color: rgba(44, 44, 44, 0.411);
-  box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
+  box-shadow: 0 0 10px rgba(234, 219, 1, 0.311);
   width: 30rem;
   gap: 5rem;
   padding: 2rem;
@@ -266,7 +276,7 @@ body {
   background-color: rgba(0, 0, 0, 0.363);
   padding: 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 2 1 5px rgba(141, 132, 1, 0.738);
+  box-shadow: 0 1px rgba(141, 132, 1, 0.738);
 }
 
 .input-box,
@@ -347,7 +357,7 @@ body {
 }
 
 .agen-container {
-  width: 80%;
+  width: 100%;
   overflow-x: auto;
   padding: 1rem;
   margin: 3rem 0;
@@ -411,6 +421,132 @@ th {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+/* Layout Principal do Admin */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.admin-page-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Container da Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #1a1a1a;
+  border-right: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+/* Header da Sidebar */
+.sidebar-header h2 {
+  color: #ffc107;
+  font-size: 1.25rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.sidebar-header span {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Links de Navegação */
+.sidebar-nav {
+  margin-top: 2rem;
+  flex: 1;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  color: #aaa;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #262626;
+  color: #ffffff;
+}
+
+/* Estado Ativo (Link Selecionado) */
+.nav-link.active {
+  background-color: #ffc107;
+  color: #121212;
+  font-weight: bold;
+}
+
+.nav-link .icon {
+  font-size: 1.2rem;
+}
+
+/* Rodapé da Sidebar */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 1rem;
+}
+
+.btn-voltar,
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.btn-voltar {
+  background-color: #262626;
+  color: #ccc;
+}
+
+.btn-voltar:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-logout {
+  background-color: transparent;
+  color: #ff4d4d;
+}
+
+.btn-logout:hover {
+  background-color: rgba(255, 77, 77, 0.1);
 }
 
 /* ===== Modal ===== */
