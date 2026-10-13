@@ -337,7 +337,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5rem 0;
+  padding: 1rem 0;
   color: #fff;
 }
 
@@ -394,10 +394,10 @@ th {
   font-weight: 600;
 }
 
-.excluir-btn {
+.btn-delete {
   background-color: red;
   padding: 0.5rem;
-  width: 3rem;
+  width: 3.3rem;
   display: flex;
   cursor: pointer;
   border-radius: 0.5rem;
@@ -405,15 +405,15 @@ th {
   justify-content: center;
 }
 
-.editar-btn {
+.btn-edit {
   display: flex;
+  width: 3rem;
   align-items: center;
   cursor: pointer;
   justify-content: center;
   background-color: orange;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  height: 2.1rem;
 }
 
 .inputs-agen {
@@ -421,6 +421,23 @@ th {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+/* botão de add da page barbeiros */
+.btn-add-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  padding: 0 0 0.5rem;
+}
+
+.btn-add {
+  padding: 0.2rem;
+  background-color: rgb(255, 221, 0);
+  border-radius: 0.5rem;
+  color: rgba(0, 0, 0, 0.703);
+  cursor: pointer;
 }
 
 /* Layout Principal do Admin */
@@ -582,9 +599,10 @@ th {
   justify-content: center;
   background-color: #1e1e1e; /* Cor de fundo da caixa */
   color: #ffffff;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
   width: 90%;
+  height: fit-content;
   max-width: 480px; /* Impede que fique gigante em monitores grandes */
   
   /* Sombra para destacar o modal do fundo escuro */
@@ -599,7 +617,6 @@ th {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 13rem;
   gap: 1rem;
 }
 

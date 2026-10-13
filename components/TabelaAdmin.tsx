@@ -12,7 +12,7 @@ export default function TabelaAdmin({
   colunas,
   loading = false,
   vazio = false,
-  mensagemVazio = "Nenhum registo encontrado.",
+  mensagemVazio = "Nenhum registro encontrado.",
   children,
 }: TabelaAdminProps) {
   if (loading) {

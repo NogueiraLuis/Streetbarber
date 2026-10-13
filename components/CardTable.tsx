@@ -13,7 +13,7 @@ export default function LinhaAdmin({ dados, onEditar, onExcluir }: LinhaAdminPro
       {dados.map((valor, index) => (
         <td key={index}>{valor}</td>
       ))}
-      <td className="actions-cell">
+      <td className="inputs-agen">
         {onEditar && (
           <button className="btn-edit" onClick={onEditar}>
             Editar

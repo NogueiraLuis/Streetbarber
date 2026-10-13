@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
-import CardTable from "@/components/CardTable";
 import { Agendamento } from "@/src/types/agendamento";
+import ModalAdmin from "@/components/ModalAdmin";
 import TabelaAdmin from "@/components/TabelaAdmin";
+import LinhaAdmin from "@/components/CardTable";
 
 export default function AdminPage() {
   const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
@@ -51,7 +52,7 @@ export default function AdminPage() {
       alert("Erro ao excluir: " + error.message);
     } else {
       // Atualiza a lista na tela sem precisar fazer outro fetch
-      setAgendamentos((prev) => prev.filter((item) => item.id !== id));
+      buscarAgendamentos()
       alert("Agendamento excluído com sucesso!");
     }
   };
@@ -86,9 +87,9 @@ export default function AdminPage() {
     if (error) {
       alert("Erro ao atualizar: " + error.message);
     } else {
-      alert("Agendamento atualizado!");
+      buscarAgendamentos()// Recarrega a lista atualizada
       setAgendamentoEditando(null); // Fecha o modal
-      buscarAgendamentos(); // Recarrega a lista atualizada
+      alert("Agendamento atualizado!");
     }
   };
 
@@ -100,71 +101,51 @@ export default function AdminPage() {
 
       <section className="agen-container">
         {/* COMPONENTE REUTILIZÁVEL DE TABELA */}
-        <TabelaAdmin
-          colunas={["Nome", "Email", "Barbeiro", "Ações"]}
-          loading={loading}
-          vazio={agendamentos.length === 0}
-          mensagemVazio="Nenhum agendamento encontrado."
-        >
-          <TabelaAdmin colunas={["Nome", "Email", "Barbeiro", "Ações"]}>
-            {agendamentos.map((item) => (
-              <CardTable
-                key={item.id}
-                dados={[
-                  item.nome_cliente,
-                  item.email_cliente,
-                  item.barbeiros?.nome || "Não informado",
-                ]}
-                onEditar={() => handleAbrirEdicao(item.id)}
-                onExcluir={() => handleExcluir(item.id)}
-              />
-            ))}
-          </TabelaAdmin>
+        <TabelaAdmin colunas={["Nome", "Email", "Barbeiro", "Ações"]}
+        vazio={agendamentos.length === 0}>
+          {agendamentos.map((item) => (
+            <LinhaAdmin
+              key={item.id}
+              dados={[
+                item.nome_cliente,
+                item.email_cliente,
+                item.barbeiros?.nome || "Não informado",
+              ]}
+              onEditar={() => handleAbrirEdicao(item.id)}
+              onExcluir={() => handleExcluir(item.id)}
+            />
+          ))}
         </TabelaAdmin>
       </section>
 
-      {/* MODAL SIMPLES DE EDIÇÃO */}
-      {agendamentoEditando && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>Editar Agendamento</h2>
-            <form className="modal-form" onSubmit={handleSalvarEdicao}>
-              <div className="input-modal">
-                <label>Nome:</label>
-                <input
-                  type="text"
-                  value={novoNome}
-                  onChange={(e) => setNovoNome(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="input-modal">
-                <label>Email:</label>
-                <input
-                  type="email"
-                  value={novoEmail}
-                  onChange={(e) => setNovoEmail(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="modal-buttons">
-                <button type="submit" className="btn-submit">
-                  Salvar
-                </button>
-                <button
-                  type="button"
-                  className="btn-cancel"
-                  onClick={() => setAgendamentoEditando(null)}
-                >
-                  Cancelar
-                </button>
-              </div>
-            </form>
-          </div>
+      {/* USO DO MODAL REUTILIZÁVEL */}
+      <ModalAdmin
+        titulo="Editar Agendamento"
+        isOpen={!!agendamentoEditando} // Transforma o objeto em booleano (true se existir um agendamento)
+        onClose={() => setAgendamentoEditando(null)}
+        onSubmit={handleSalvarEdicao}
+      >
+        <div className="input-modal">
+          <label>Nome do Cliente:</label>
+          <input
+            type="text"
+            value={novoNome}
+            onChange={(e) => setNovoNome(e.target.value)}
+            required
+          />
         </div>
-      )}
+
+        <div className="input-modal">
+          <label>E-mail:</label>
+          <input
+            type="email"
+            value={novoEmail}
+            onChange={(e) => setNovoEmail(e.target.value)}
+            required
+          />
+        </div>
+      </ModalAdmin>
+
     </main>
   );
 }
