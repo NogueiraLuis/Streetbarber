@@ -16,7 +16,6 @@ export default function Sidebar() {
   const menuItems = [
     { label: "Agendamentos", href: "/admin", icon: "📅" },
     { label: "Barbeiros", href: "/admin/barbeiros", icon: "💈" },
-    { label: "Serviços", href: "/admin/servicos", icon: "✂️" },
   ];
 
   return (

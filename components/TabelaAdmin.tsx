@@ -19,6 +19,7 @@ export default function TabelaAdmin({
     return <p className="loading-text">Carregando...</p>;
   }
 
+
   return (
     <table className="table-agen">
       <thead>

@@ -153,7 +153,7 @@ export default function barberPage() {
       <ModalAdmin
         titulo="Editar Barbeiro"
         isOpen={!!isModalAberto} // Transforma o objeto em booleano (true se existir um agendamento)
-        onClose={() => setBarbeiroEditando(null)}
+        onClose={handleFecharModal}
         onSubmit={handleSalvar}
       >
         <div className="input-modal">

@@ -308,6 +308,16 @@ body {
   padding: 0.4rem;
 }
 
+.btn-cancel {
+  background-color: black;
+  border: solid 1 rgba(234, 83, 1, 0.488);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 10rem;
+  padding: 0.4rem;
+}
+
 .btn-submit:hover {
   box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
 }
@@ -440,7 +450,8 @@ th {
   cursor: pointer;
 }
 
-/* Layout Principal do Admin */
+/* ===== SIDEBAR ADMIN ===== */
+
 .admin-layout {
   display: flex;
   min-height: 100vh;
@@ -568,24 +579,20 @@ th {
 
 /* ===== Modal ===== */
 
-/* 1. FUNDO ESCURO E COBERTURA TOTAL */
 .modal-overlay {
   position: fixed; /* Fixa o elemento em relação à janela do navegador */
   top: 0;
   left: 0;
   width: 100vw; /* Ocupa 100% da largura da tela */
   height: 100vh; /* Ocupa 100% da altura da tela */
-  
-  /* Fundo preto com 75% de opacidade */
   background-color: rgba(0, 0, 0, 0.75); 
   
   /* Efeito opcional de desfoque no conteúdo atrás do modal */
   backdrop-filter: blur(4px); 
 
-  /* 2. CENTRALIZAÇÃO PERFEITA NO MEIO DA TELA */
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center;     /* Centraliza verticalmente */
+  justify-content: center;
+  align-items: center; 
 
   /* 3. CAMADA SUPERIOR (Fica sobre todo o site) */
   z-index: 9999; /* Valor alto para garantir que fique acima do header, footer e tabelas */
@@ -597,19 +604,17 @@ th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #1e1e1e; /* Cor de fundo da caixa */
+  background-color: #1e1e1e;
   color: #ffffff;
   padding: 1.5rem;
   border-radius: 10px;
   width: 90%;
   height: fit-content;
   max-width: 480px; /* Impede que fique gigante em monitores grandes */
-  
-  /* Sombra para destacar o modal do fundo escuro */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   border: 1px solid #333;
   
-  /* Animação suave de entrada */
+  /* Animação de entrada */
   animation: modalSurgir 0.2s ease-out;
 }
 
@@ -637,7 +642,7 @@ th {
   gap: 1rem;
 }
 
-/* Animação simples de aparecimento */
+/* Animação de aparecimento */
 @keyframes modalSurgir {
   from {
     opacity: 0;

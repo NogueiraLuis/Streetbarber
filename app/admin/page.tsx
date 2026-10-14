@@ -3,11 +3,14 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
 import { Agendamento } from "@/src/types/agendamento";
+import { useRouter } from "next/navigation";
+import { formatarDataHora } from "@/src/lib/formatadores";
 import ModalAdmin from "@/components/ModalAdmin";
 import TabelaAdmin from "@/components/TabelaAdmin";
 import LinhaAdmin from "@/components/CardTable";
 
 export default function AdminPage() {
+  const router = useRouter();
   const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
 
   const [loading, setLoading] = useState(true);
@@ -17,15 +20,15 @@ export default function AdminPage() {
     useState<Agendamento | null>(null);
 
   const [novoNome, setNovoNome] = useState("");
-
   const [novoEmail, setNovoEmail] = useState("");
+  const [ novaDataHora, setNovaDataHora ] = useState("")
 
   // BUSCAR AGENDAMENTOS
   const buscarAgendamentos = async () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("agendamentos")
-      .select("id, nome_cliente, email_cliente, barbeiros (nome)");
+      .select("id, nome_cliente, email_cliente, barbeiros (nome), data_hora");
 
     if (!error && data) {
       setAgendamentos(data as unknown as Agendamento[]);
@@ -35,6 +38,21 @@ export default function AdminPage() {
 
   useEffect(() => {
     buscarAgendamentos();
+  }, []);
+
+  useEffect(() => {
+    async function checarSessao() {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        // Se não houver usuário logado, manda de volta para a tela de login
+        router.push("/login");
+      }
+    }
+
+    checarSessao();
   }, []);
 
   // -------------------------------------------------------------
@@ -52,7 +70,7 @@ export default function AdminPage() {
       alert("Erro ao excluir: " + error.message);
     } else {
       // Atualiza a lista na tela sem precisar fazer outro fetch
-      buscarAgendamentos()
+      buscarAgendamentos();
       alert("Agendamento excluído com sucesso!");
     }
   };
@@ -66,6 +84,7 @@ export default function AdminPage() {
       setAgendamentoEditando(item);
       setNovoNome(item.nome_cliente);
       setNovoEmail(item.email_cliente);
+      setNovaDataHora(item.data_hora);
     }
   };
 
@@ -81,13 +100,15 @@ export default function AdminPage() {
       .update({
         nome_cliente: novoNome,
         email_cliente: novoEmail,
+        data_hora: novaDataHora,
+
       })
       .eq("id", agendamentoEditando.id);
 
     if (error) {
       alert("Erro ao atualizar: " + error.message);
     } else {
-      buscarAgendamentos()// Recarrega a lista atualizada
+      buscarAgendamentos(); // Recarrega a lista atualizada
       setAgendamentoEditando(null); // Fecha o modal
       alert("Agendamento atualizado!");
     }
@@ -101,8 +122,10 @@ export default function AdminPage() {
 
       <section className="agen-container">
         {/* COMPONENTE REUTILIZÁVEL DE TABELA */}
-        <TabelaAdmin colunas={["Nome", "Email", "Barbeiro", "Ações"]}
-        vazio={agendamentos.length === 0}>
+        <TabelaAdmin
+          colunas={["Nome", "Email", "Barbeiro", "Data & Hora", "Ações"]}
+          vazio={agendamentos.length === 0}
+        >
           {agendamentos.map((item) => (
             <LinhaAdmin
               key={item.id}
@@ -110,6 +133,7 @@ export default function AdminPage() {
                 item.nome_cliente,
                 item.email_cliente,
                 item.barbeiros?.nome || "Não informado",
+                formatarDataHora(item.data_hora),
               ]}
               onEditar={() => handleAbrirEdicao(item.id)}
               onExcluir={() => handleExcluir(item.id)}
@@ -144,8 +168,16 @@ export default function AdminPage() {
             required
           />
         </div>
+         <div className="input-modal">
+          <label>Data & Hora:</label>
+          <input
+            type="text"
+            value={novaDataHora}
+            onChange={(e) => setNovaDataHora(e.target.value)}
+            required
+          />
+        </div>
       </ModalAdmin>
-
     </main>
   );
 }
