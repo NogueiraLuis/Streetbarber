@@ -217,6 +217,7 @@ body {
 .sobre-conteudo {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   gap: 4rem;
   padding: 0 5rem;
   height: 100%;
@@ -233,6 +234,10 @@ body {
 .text {
   font-size: 1.3rem;
   text-align: justify;
+}
+
+.sbr-nos-btn {
+  padding: 0.5rem;
 }
 
 /* ===== AGENDAMENTO ===== */
@@ -269,7 +274,8 @@ body {
   border: solid 1 rgba(234, 219, 1, 0.488);
 }
 
-.inputs {
+.inputs,
+.input-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -340,6 +346,72 @@ body {
   width: 100%;
 }
 
+/* ===== LOGIN ADMIN ===== */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  min-height: 13rem;
+  gap: 1rem;
+  align-items: center;
+  color: #cacacb;
+  background-color: rgba(44, 44, 44, 0.411);
+  box-shadow: 0 0 10px rgba(234, 219, 1, 0.311);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: solid 1 rgba(234, 219, 1, 0.488);
+}
+
+.input-group input {
+  background-color: black;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
+.login-form h2 {
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 90%;
+  text-align: center;
+}
+
+.inputs-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.inputs-login a {
+  background-color: black;
+  border: solid 1 rgba(234, 219, 1, 0.488);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 30%;
+  padding: 0.4rem;
+}
+
+.inputs-login button {
+  background-color: black;
+  border: solid 1 rgba(234, 219, 1, 0.488);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 65%;
+  padding: 0.4rem;
+}
 /* ===== ADMIN ===== */
 
 .admin-hero {
@@ -585,14 +657,14 @@ th {
   left: 0;
   width: 100vw; /* Ocupa 100% da largura da tela */
   height: 100vh; /* Ocupa 100% da altura da tela */
-  background-color: rgba(0, 0, 0, 0.75); 
-  
+  background-color: rgba(0, 0, 0, 0.75);
+
   /* Efeito opcional de desfoque no conteúdo atrás do modal */
-  backdrop-filter: blur(4px); 
+  backdrop-filter: blur(4px);
 
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 
   /* 3. CAMADA SUPERIOR (Fica sobre todo o site) */
   z-index: 9999; /* Valor alto para garantir que fique acima do header, footer e tabelas */
@@ -613,7 +685,7 @@ th {
   max-width: 480px; /* Impede que fique gigante em monitores grandes */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   border: 1px solid #333;
-  
+
   /* Animação de entrada */
   animation: modalSurgir 0.2s ease-out;
 }

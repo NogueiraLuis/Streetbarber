@@ -1,4 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Limelight } from "next/font/google";
+const limeLight = Limelight({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-limelight",
+});
+
 
 export default function SobrePage() {
   return (
@@ -33,6 +41,11 @@ export default function SobrePage() {
             avaliação no Google.
           </p>
         </section>
+        <span className="sbr-nos-btn">
+          <button type="button">
+            <Link className={`lista-links ${limeLight.className}`} href="/">Voltar</Link>
+          </button>
+          </span>
       </div>
     </main>
   );

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/src/lib/supabase";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -34,11 +35,12 @@ export default function LoginPage() {
     <main className="login-container">
       <form onSubmit={handleLogin} className="login-form"
       autoComplete="off">
-        <h2>Área do Barbeiro</h2>
+        <h2>ÀREA DO BARBEIRO</h2>
 
         <div className="input-group">
           <label>E-mail</label>
           <input
+
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -55,10 +57,15 @@ export default function LoginPage() {
             required
           />
         </div>
+        <span className="inputs-login">
+          
+          <button className="login-submit-btn" type="submit" disabled={loading}>
+            {loading ? "Entrando..." : "Entrar"}
+          </button>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Entrando..." : "Entrar"}
-        </button>
+          <Link className="btn-login-voltar" href="/">Voltar</Link>
+
+        </span>
       </form>
     </main>
   );
