@@ -248,7 +248,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
-  width: 40%;
   text-align: center;
 }
 
@@ -257,9 +256,10 @@ body {
   flex-direction: column;
   background-color: rgba(44, 44, 44, 0.411);
   box-shadow: 0 0 10px rgba(234, 219, 1, 0.311);
-  width: 30rem;
+  max-width: 100%;
+  min-width: 60%;
   gap: 5rem;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   border: solid 1 rgba(234, 219, 1, 0.488);
 }
