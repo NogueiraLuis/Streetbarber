@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
+import Link from "next/link";
 
 export interface Barbeiro {
   id: string;
@@ -178,6 +179,8 @@ export default function AgenPage() {
           <button className="btn-submit" type="submit">
             Finalizar
           </button>
+          
+          <Link className="btn-agen-voltar" href="/">Voltar</Link>
         </section>
       </form>
     </main>
