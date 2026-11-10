@@ -28,8 +28,33 @@ export default function AgenPage() {
   const [barbeiroId, setBarbeiroId] = useState("");
   const [data, setData] = useState("");
   const [horario, setHorario] = useState("");
+  const [horariosOcupados, setHorariosOcupados] = useState<string[]>([]);
 
   const [barbeiros, setBarbeiros] = useState<Barbeiro[]>([]);
+
+  const horariosDisponiveis = [
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+    "19:00",
+    "19:30",
+  ];
 
   // 2. BUSCAR BARBEIROS
   useEffect(() => {
@@ -47,6 +72,38 @@ export default function AgenPage() {
 
     carregarBarbeiros();
   }, []);
+
+  // 3. BUSCAR HORÁRIOS OCUPADOS
+  useEffect(() => {
+    async function buscarHorariosOcupados() {
+      if (!data || !barbeiroId) {
+        setHorariosOcupados([]);
+        return;
+      }
+
+      const { data: agendamentos, error } = await supabase
+        .from("agendamentos")
+        .select("data_hora")
+        .eq("barbeiro_id", barbeiroId)
+        .gte("data_hora", `${data}T00:00:00`)
+        .lte("data_hora", `${data}T23:59:59`);
+
+      if (error) {
+        console.error("Erro ao buscar horários ocupados:", error.message);
+        return;
+      }
+
+      if (agendamentos) {
+        const ocupados = agendamentos.map((item) => {
+          // Extrai o "HH:MM" de "YYYY-MM-DDTHH:MM:SS"
+          return item.data_hora.split("T")[1].substring(0, 5);
+        });
+        setHorariosOcupados(ocupados);
+      }
+    }
+
+    buscarHorariosOcupados();
+  }, [data, barbeiroId]);
 
   // 3. SUBMIT DO FORMULÁRIO
   const handleSubmit = async (e: React.FormEvent) => {
@@ -165,22 +222,45 @@ export default function AgenPage() {
           {/* HORÁRIO (Faltava este input no formulário) */}
           <div className="inputs">
             <h2>Horário:</h2>
-            <input
-              className="input-box"
-              type="time"
-              value={horario}
-              onChange={(e) => setHorario(e.target.value)}
-              required
-            />
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-2">
+              {horariosDisponiveis.map((item) => {
+                const isSelecionado = horario === item;
+                const isOcupado = horariosOcupados.includes(item); // 👈 Verifica se já está ocupado
+
+                return (
+                  <button
+                    type="button"
+                    key={item}
+                    disabled={isOcupado} // 👈 Bloqueia o clique
+                    onClick={() => setHorario(item)}
+                    className={`py-2 px-3 rounded-md text-md font-medium transition-all border ${
+                      isOcupado
+                        ? "bg-zinc-800 text-zinc-600 border-zinc-800 cursor-not-allowed line-through" // Estilo ocupado
+                        : isSelecionado
+                          ? "bg-amber-500 text-zinc-950 border-amber-500 font-bold shadow-md cursor-pointer" // Estilo selecionado
+                          : "bg-zinc-900 text-zinc-300 border-zinc-800 hover:border-amber-500/50 hover:bg-zinc-800 cursor-pointer" // Estilo padrão
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </section>
 
         <section className="submit-container">
-          <button className="btn-submit" type="submit">
+          <button
+            className={`btn-submit ${!horario || !data ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+            type="submit"
+            disabled={!horario || !data}
+          >
             Finalizar
           </button>
-          
-          <Link className="btn-agen-voltar" href="/">Voltar</Link>
+
+          <Link className="btn-agen-voltar" href="/">
+            Voltar
+          </Link>
         </section>
       </form>
     </main>
