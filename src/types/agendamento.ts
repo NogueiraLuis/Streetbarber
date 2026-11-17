@@ -1,4 +1,3 @@
-
 export interface Agendamento {
   id: string;
   nome_cliente: string;

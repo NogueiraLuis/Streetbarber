@@ -28,7 +28,6 @@ export default function barberPage() {
       .from("barbeiros")
       .select("id, nome, email, telefone");
 
-    //Perguntar o motivo de ser escrito assim!
     if (!error && dadosBarbeiros) {
       setBarbeiros(dadosBarbeiros as unknown as Barbeiros[]);
     }
@@ -70,7 +69,7 @@ export default function barberPage() {
     e.preventDefault();
 
     if (barbeiroEditando?.id) {
-      // ------------------- MODO EDIÇÃO (.update) -------------------
+
       const { error } = await supabase
         .from("barbeiros")
         .update({
@@ -102,7 +101,7 @@ export default function barberPage() {
       } else {
         alert("Barbeiro cadastrado com sucesso!");
         handleFecharModal();
-        buscarBarbeiros(); // Recarrega a lista com o novo item
+        buscarBarbeiros();
       }
     }
   };

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
 import Link from "next/link";
+import {horariosDisponiveis} from "@/src/data/listaHorarios"
 
 export interface Barbeiro {
   id: string;
@@ -31,30 +32,6 @@ export default function AgenPage() {
   const [horariosOcupados, setHorariosOcupados] = useState<string[]>([]);
 
   const [barbeiros, setBarbeiros] = useState<Barbeiro[]>([]);
-
-  const horariosDisponiveis = [
-    "08:00",
-    "08:30",
-    "09:00",
-    "09:30",
-    "10:00",
-    "10:30",
-    "11:00",
-    "11:30",
-    "13:30",
-    "14:00",
-    "14:30",
-    "15:00",
-    "15:30",
-    "16:00",
-    "16:30",
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-    "19:00",
-    "19:30",
-  ];
 
   // 2. BUSCAR BARBEIROS
   useEffect(() => {
@@ -217,13 +194,13 @@ export default function AgenPage() {
             />
           </div>
 
-          {/* HORÁRIO (Faltava este input no formulário) */}
+          {/* HORÁRIO */}
           <div className="inputs">
             <h2>Horário:</h2>
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mt-2">
               {horariosDisponiveis.map((item) => {
                 const isSelecionado = horario === item;
-                const isOcupado = horariosOcupados.includes(item); // 👈 Verifica se já está ocupado
+                const isOcupado = horariosOcupados.includes(item); // Verifica se já está ocupado
 
                 return (
                   <button
