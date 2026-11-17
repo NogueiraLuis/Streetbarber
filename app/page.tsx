@@ -1,8 +1,9 @@
+'use client'
 import Image from "next/image";
 import CardServicos from "@/components/servicos";
 import Link from "next/link";
 import { Limelight } from "next/font/google";
-import {servicos} from "@/src/data/listaCortes"
+import { servicos } from "@/src/data/listaCortes";
 
 const limeLight = Limelight({
   weight: ["400"],
@@ -14,16 +15,27 @@ export default function HomePage() {
   return (
     <main className="hero">
       <div className="header">
-        <div className="logo" style={{ width: "4.5rem" }}>
-          <Image
-            src="/home/logo.png"
-            width={200}
-            height={300}
-            alt="Logo da empresa"
-            className="logo"
-          />
-        </div>
-
+        <Link
+          href="#"
+          onClick={(e) => {
+            e.preventDefault(); // Evita que a página dê um salto seco
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth", // Faz a rolagem suave até o topo
+            });
+          }}
+          style={{ display: "inline-block" }}
+        >
+          <div className="logo" style={{ width: "4.5rem", cursor: "pointer" }}>
+            <Image
+              src="/home/logo.png"
+              width={200}
+              height={300}
+              alt="Logo da empresa"
+              className="logo"
+            />
+          </div>
+        </Link>
         <nav className="navegacao-principal">
           <ul className={`lista-links ${limeLight.className}`}>
             <li>
