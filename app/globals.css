@@ -311,8 +311,17 @@ body {
   padding: 0.4rem;
 }
 
-.btn-submit:hover, .btn-agen-voltar:hover {
+.btn-submit:hover,
+.btn-agen-voltar:hover {
   box-shadow: 0 0 10px rgba(234, 218, 1, 0.738);
+}
+
+@media (min-width: 468px) {
+  .form-agen {
+    width: 100%;
+    max-width: 468px;
+    margin: 0 auto;
+  }
 }
 
 /* ===== FOOTER ===== */
@@ -399,7 +408,7 @@ body {
   width: 65%;
   padding: 0.4rem;
 }
-/* ===== ADMIN ===== */
+/* ===== ADMIN (GERAL) ===== */
 
 .admin-hero {
   display: flex;
@@ -416,22 +425,25 @@ body {
   justify-content: center;
   border-bottom: 1px solid white;
   padding: 1rem;
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
 }
 
 .admin-title h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .agen-container {
   width: 100%;
-  overflow-x: auto;
-  padding: 1rem;
-  margin: 3rem 0;
+  overflow-x: auto; /* Permite rolar a tabela lateralmente no celular sem quebrar a página */
+  padding: 0.5rem;
+  margin: 1.5rem 0;
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.334);
+  -webkit-overflow-scrolling: touch;
 }
 
 .card-agen {
@@ -448,13 +460,15 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: sans-serif;
+  min-width: 600px; /* Garante que a tabela não fique espremida demais */
 }
 
 th,
 td {
-  padding: 20px 19px;
+  padding: 12px 10px; /* Reduzido um pouco para encaixar melhor no mobile */
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
 }
 
 th {
@@ -463,78 +477,91 @@ th {
   font-weight: 600;
 }
 
-.btn-delete {
-  background-color: red;
-  padding: 0.5rem;
-  width: 3.3rem;
-  display: flex;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-edit {
-  display: flex;
-  width: 3rem;
-  align-items: center;
-  cursor: pointer;
-  justify-content: center;
-  background-color: orange;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.btn-cancel {
-  background-color: black;
-  border: solid 1 rgba(234, 83, 1, 0.488);
-  border-radius: 0.5rem;
-  transition: 0.3s;
-  cursor: pointer;
-  width: 10rem;
-  padding: 0.4rem;
-}
-
 .inputs-agen {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botões de Ação */
+.inputs-agen {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn-delete,
+.btn-edit {
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #e53935;
+  width: 2.5rem;
+}
+.btn-edit {
+  background-color: #fb8c00;
+  width: 2.5rem;
+}
+
+.btn-cancel {
+  background-color: black;
+  border: solid 1px rgba(234, 83, 1, 0.488);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+  max-width: 10rem;
+  padding: 0.4rem;
+  color: white;
 }
 
 /* botão de add da page barbeiros */
 .btn-add-container {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
   padding: 0 0 0.5rem;
 }
 
 .btn-add {
-  padding: 0.2rem;
+  padding: 0.4rem 0.8rem;
   background-color: rgb(255, 221, 0);
   border-radius: 0.5rem;
-  color: rgba(0, 0, 0, 0.703);
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
   cursor: pointer;
+  border: none;
 }
 
-/* ===== SIDEBAR ADMIN ===== */
+/* ===== LAYOUT & SIDEBAR RESPONSIVA ===== */
 
 .admin-layout {
   display: flex;
   min-height: 100vh;
   background-color: #121212;
   color: #ffffff;
+  position: relative;
 }
 
 .admin-page-content {
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
+  width: 100%;
 }
 
-/* Container da Sidebar */
+/* Sidebar Padrão (Desktop) */
 .sidebar {
   width: 220px;
   background-color: #1a1a1a;
@@ -546,6 +573,8 @@ th {
   height: 100vh;
   position: sticky;
   top: 0;
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
 }
 
 /* Header da Sidebar */
@@ -593,7 +622,6 @@ th {
   color: #ffffff;
 }
 
-/* Estado Ativo (Link Selecionado) */
 .nav-link.active {
   background-color: #ffc107;
   color: #121212;
@@ -644,6 +672,65 @@ th {
 
 .btn-logout:hover {
   background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Botão do Menu Hambúrguer (Oculto no Desktop) */
+.mobile-menu-btn {
+  display: none;
+}
+
+/* ===== MEDIA QUERY PARA CELULARES (Abaixo de 768px) ===== */
+
+@media (max-width: 768px) {
+  /* Transforma o layout em coluna: topo com o botão e conteúdo abaixo */
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  /* Faz a sidebar virar uma gaveta flutuante oculta por padrão */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Escondida totalmente para a esquerda */
+    width: 250px;
+    height: 100vh;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease-in-out;
+  }
+
+  /* Classe que o React vai ativar quando o usuário clicar no menu */
+  .sidebar.open {
+    left: 0;
+  }
+
+  /* Criação do Botão Hambúrguer no topo da tela mobile */
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    padding: 1rem;
+    color: #ffc107;
+    border-bottom: 1px solid #2a2a2a;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .menu-toggle-icon {
+    background: none;
+    border: none;
+    color: #ffc107;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .admin-title {
+    width: 90%;
+  }
+
+  .admin-title h1 {
+    font-size: 1.2rem;
+  }
 }
 
 /* ===== Modal ===== */

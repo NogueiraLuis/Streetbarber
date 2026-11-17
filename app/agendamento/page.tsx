@@ -95,7 +95,6 @@ export default function AgenPage() {
 
       if (agendamentos) {
         const ocupados = agendamentos.map((item) => {
-          // Extrai o "HH:MM" de "YYYY-MM-DDTHH:MM:SS"
           return item.data_hora.split("T")[1].substring(0, 5);
         });
         setHorariosOcupados(ocupados);
@@ -109,7 +108,6 @@ export default function AgenPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Trava de segurança caso algum campo passe despercebido
     if (!data || !horario) {
       alert("Selecione a data e o horário do agendamento!");
       return;
