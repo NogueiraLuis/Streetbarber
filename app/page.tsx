@@ -28,7 +28,7 @@ export default function HomePage() {
         >
           <div className="logo" style={{ width: "4.5rem", cursor: "pointer" }}>
             <Image
-              src="/home/logo.png"
+              src="/home/logo.webp"
               width={200}
               height={300}
               alt="Logo da empresa"
@@ -53,9 +53,9 @@ export default function HomePage() {
         <section className="home">
           <div>
             <Image
-              src="/home/title-home.png"
-              width={1100}
-              height={200}
+              src="/home/logo.webp"
+              width={500}
+              height={100}
               alt="Street Barbershop"
             />
           </div>
