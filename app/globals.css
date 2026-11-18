@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   background-image:
     linear-gradient(rgba(18, 18, 18, 0.462), rgba(0, 0, 0, 0.85)),
-    url("../public/background/mural-back.webp");
+    url("../public/home/background/mural-back.webp");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -29,7 +29,6 @@ html {
   align-items: center;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.901);
-  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,8 +41,8 @@ html {
   padding: 10px;
   font-size: 85%;
   border-radius: 10px;
-  background-color: rgba(209, 209, 209, 0.738);
-  color: black;
+  background-color: #7f24ce;
+  color: #fff;
   cursor: pointer;
   border: none;
   font-weight: bold;
@@ -51,7 +50,7 @@ html {
 }
 
 .btn-agen:hover {
-  background-color: #fff;
+  background-color: #ae52ff;
 }
 
 .logo {
@@ -59,21 +58,24 @@ html {
   object-fit: cover; /* Garante que a imagem redonda não distorça */
 }
 
-.lista-links {
+.btn-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.lista-links,
+.admin-link {
   display: flex;
   font-size: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  transition: 0.2s;
-  /* Corrigido: adicionado 'px' nos valores da sombra */
-  box-shadow: 0 4px 10px rgba(134, 134, 134, 0.2);
-  color: rgba(255, 255, 255, 0.738);
+  box-shadow: 0 4px 5px rgba(154, 6, 234, 0.355);
+  color: rgba(255, 247, 1, 0.738);
   text-decoration: none;
 }
 
 .lista-links:hover {
-  border: solid 2px rgba(56, 56, 56, 0.738); /* Adicionado 'px' */
-  color: #fff;
+  color: #ffcc00;
 }
 
 /* ===== HOME ===== */
@@ -90,6 +92,7 @@ html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 4rem;
   height: 40rem;
 }
 
@@ -136,8 +139,9 @@ html {
   display: flex;
   flex-direction: column;
   flex: 1 1 300px;
-  background-color: rgba(0, 0, 0, 0.663);
-  border-radius: 15px;
+  background-color: #1a1a1a;
+  box-shadow: 1px 10px 25px 1px rgba(166, 8, 228, 0.738);
+  border-radius: 16px;
   padding: 15px;
   gap: 0.5rem;
 }
@@ -356,8 +360,7 @@ html {
 
 .footer-container {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -435,7 +438,6 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
   color: #fff;
 }
 
@@ -444,16 +446,8 @@ html {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid white;
-  padding: 1rem;
   width: 100%;
   max-width: 500px;
-}
-
-.admin-title h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
 }
 
 .agen-container {
@@ -519,11 +513,12 @@ th {
 
 .btn-delete {
   background-color: #e53935;
-  width: 2.5rem;
+  width: 3rem;
 }
 .btn-edit {
-  background-color: #fb8c00;
-  width: 2.5rem;
+  background-color: #fbe600;
+  width: 2.6rem;
+  color: black;
 }
 
 .btn-cancel {

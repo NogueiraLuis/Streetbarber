@@ -5,6 +5,7 @@ import { supabase } from "@/src/lib/supabase";
 import { Agendamento } from "@/src/types/agendamento";
 import { useRouter } from "next/navigation";
 import { formatarDataHora } from "@/src/lib/formatadores";
+import Image from "next/image";
 import ModalAdmin from "@/components/ModalAdmin";
 import TabelaAdmin from "@/components/TabelaAdmin";
 import LinhaAdmin from "@/components/CardTable";
@@ -21,7 +22,7 @@ export default function AdminPage() {
 
   const [novoNome, setNovoNome] = useState("");
   const [novoEmail, setNovoEmail] = useState("");
-  const [ novaDataHora, setNovaDataHora ] = useState("")
+  const [novaDataHora, setNovaDataHora] = useState("");
 
   // BUSCAR AGENDAMENTOS
   const buscarAgendamentos = async () => {
@@ -101,7 +102,6 @@ export default function AdminPage() {
         nome_cliente: novoNome,
         email_cliente: novoEmail,
         data_hora: novaDataHora,
-
       })
       .eq("id", agendamentoEditando.id);
 
@@ -117,7 +117,13 @@ export default function AdminPage() {
   return (
     <main className="admin-hero">
       <header className="admin-title">
-        <h1>AGENDAMENTOS</h1>
+          <Image
+            src="/admin/titulo.png"
+            width={300}
+            height={200}
+            alt="Logo da empresa"
+            className="logo"
+          />
       </header>
 
       <section className="agen-container">
@@ -168,7 +174,7 @@ export default function AdminPage() {
             required
           />
         </div>
-         <div className="input-modal">
+        <div className="input-modal">
           <label>Data & Hora:</label>
           <input
             type="text"

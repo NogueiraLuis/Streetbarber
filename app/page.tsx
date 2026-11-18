@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import CardServicos from "@/components/servicos";
 import Link from "next/link";
@@ -44,9 +44,15 @@ export default function HomePage() {
           </ul>
         </nav>
 
-        <button className={`btn-agen ${limeLight.className}`}>
-          <Link href="/agendamento">Agendar corte</Link>
-        </button>
+        <div className="btn-nav">
+          <Link href="/admin" className="admin-link">
+            Admin
+          </Link>
+          <button className={`btn-agen ${limeLight.className}`}>
+            <Link href="/agendamento">Agendar corte</Link>
+          </button>
+ 
+        </div>
       </div>
 
       <div className="sessoes">
@@ -202,9 +208,6 @@ export default function HomePage() {
               </p>
 
               {/* Link discreto do Admin */}
-              <Link href="/admin" className="admin-link">
-                Área do Barbeiro 🔒
-              </Link>
             </div>
           </footer>
         </section>

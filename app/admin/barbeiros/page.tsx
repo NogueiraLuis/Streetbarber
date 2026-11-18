@@ -4,6 +4,7 @@ import LinhaAdmin from "@/components/CardTable";
 import ModalAdmin from "@/components/ModalAdmin";
 import { Barbeiros } from "@/src/types/barbeiros";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { supabase } from "@/src/lib/supabase";
 
 export default function barberPage() {
@@ -49,15 +50,15 @@ export default function barberPage() {
   };
 
   const handleAbrirEdicao = (id: string) => {
-  const item = barbeiros.find((b) => b.id === id);
-  if (item) {
-    setBarbeiroEditando(item);
-    setNovoNome(item.nome);
-    setNovoEmail(item.email);
-    setNovoTelefone(item.telefone);
-    setIsModalAberto(true);
-  }
-};
+    const item = barbeiros.find((b) => b.id === id);
+    if (item) {
+      setBarbeiroEditando(item);
+      setNovoNome(item.nome);
+      setNovoEmail(item.email);
+      setNovoTelefone(item.telefone);
+      setIsModalAberto(true);
+    }
+  };
 
   // Função de FECHAR MODAL
   const handleFecharModal = () => {
@@ -69,7 +70,6 @@ export default function barberPage() {
     e.preventDefault();
 
     if (barbeiroEditando?.id) {
-
       const { error } = await supabase
         .from("barbeiros")
         .update({
@@ -124,7 +124,13 @@ export default function barberPage() {
   return (
     <main className="admin-hero">
       <header className="admin-title">
-        <h1>BARBEIROS</h1>
+        <Image
+          src="/admin/barbeiros/title.png"
+          width={300}
+          height={200}
+          alt="Logo da empresa"
+          className="logo"
+        />
       </header>
 
       <section className="agen-container">
