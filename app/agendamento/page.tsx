@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/src/lib/supabase";
 import Link from "next/link";
-import {horariosDisponiveis} from "@/src/data/listaHorarios"
+import Image from "next/image";
+import { horariosDisponiveis } from "@/src/data/listaHorarios";
 
 export interface Barbeiro {
   id: string;
@@ -120,7 +121,15 @@ export default function AgenPage() {
   return (
     <main className="agen-hero">
       <header className="agen-title">
-        <strong>AGENDAMENTO</strong>
+        <span>
+          <Image
+            src="/admin/titulo.png"
+            width={400}
+            height={200}
+            alt="Logo da empresa"
+            className="logo"
+          />
+        </span>
       </header>
       <form className="form-agen" onSubmit={handleSubmit}>
         <section className="inputs-container">
