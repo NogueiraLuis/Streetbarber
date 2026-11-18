@@ -104,7 +104,7 @@ export default function HomePage() {
         <section className="galeria">
           <div>
             <Image
-              src="/galeria/title-galeria.png"
+              src="/home/galeria/title-galeria.png"
               width={600}
               height={400}
               alt="Equipe"
@@ -113,28 +113,28 @@ export default function HomePage() {
 
           <section className="grade-fotos">
             <Image
-              src="/galeria/corte-ex1.jpg"
+              src="/home/galeria/corte-ex1.jpg"
               width={200}
               height={200}
               alt="Equipe"
               className="foto"
             />
             <Image
-              src="/galeria/corte-ex2.jpg"
+              src="/home/galeria/corte-ex2.jpg"
               width={200}
               height={200}
               alt="Equipe"
               className="foto"
             />
             <Image
-              src="/galeria/corte-ex3.jpg"
+              src="/home/galeria/corte-ex3.jpg"
               width={200}
               height={200}
               alt="Equipe"
               className="foto"
             />
             <Image
-              src="/galeria/corte-ex4.jpg"
+              src="/home/galeria/corte-ex4.jpg"
               width={200}
               height={200}
               alt="Equipe"
@@ -145,7 +145,7 @@ export default function HomePage() {
         <section className="equipe">
           <div>
             <Image
-              src="/equipe/title-equipe.png"
+              src="/home/equipe/title-equipe.png"
               width={600}
               height={400}
               alt="Equipe"
@@ -154,7 +154,7 @@ export default function HomePage() {
 
           <section className="barbeiros">
             <Image
-              src="/equipe/barbeiros.png"
+              src="/home/equipe/barbeiros.png"
               width={800}
               height={400}
               alt="barbeiros"
