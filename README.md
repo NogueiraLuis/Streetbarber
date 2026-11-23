@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💈 StreetBarber
 
-## Getting Started
+Aplicação web full-stack desenvolvida com **Next.js (App Router)**, **React**, **TypeScript**, **CSS** e **Supabase**, voltada para apresentação institucional de barbearia, agendamento online de clientes sem necessidade de login e gerenciamento administrativo para profissionais.
 
-First, run the development server:
+---
+
+## 🚀 Funcionalidades
+
+### Área do Cliente (Pública)
+
+- **Página Inicial (`/`):** Apresentação da barbearia, catálogo de serviços/cortes, galeria de fotos, equipe e localização da unidade.
+
+- **Agendamento Sem Login (`/agendamento`):** Fluxo direto para o cliente escolher profissional, data/horário e informar seus dados para reserva, sem exigir cadastro ou autenticação do cliente.
+
+- **Página Sobre (`/sobre`):** Informações institucionais sobre a barbearia e sua proposta.
+
+### Painel Administrativo (Restrito)
+
+- **Autenticação de Profissionais (`/login`):** Acesso restrito à equipe/administração via **Supabase Auth**.
+
+- **Gestão de Agendamentos (`/admin`):** Visualização de agendamentos, edição de registros por modal e exclusão de reservas.
+
+- **Gestão de Barbeiros (`/admin/barbeiros`):** Cadastro, listagem e gerenciamento de profissionais disponíveis.
+
+- **Interface Responsiva:** Layout adaptado para diferentes resoluções, incluindo menu lateral com menu hambúrguer no mobile e tabelas com rolagem horizontal (`overflow-x`).
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Framework Front-end / Full-stack:** Next.js (App Router)
+- **Biblioteca de Interface:** React
+- **Tipagem Estática:** TypeScript
+- **Estilização:** CSS puro e tailwind (`globals.css` e estilos por seção/componente)
+
+- **Banco de Dados e Autenticação:** Supabase (PostgreSQL + Auth)
+
+- **Hospedagem e Deploy:** Vercel
+
+---
+
+## 📂 Estrutura do Projeto
+
+```text
+├── app/
+│   ├── admin/              # Páginas do painel administrativo (agendamentos, barbeiros)
+│   ├── agendamento/        # Página pública de agendamento
+│   ├── login/              # Tela de login para profissionais/administradores
+│   ├── sobre/              # Página institucional
+│   ├── globals.css         # Estilos globais e regras de responsividade
+│   ├── layout.tsx          # Layout principal da aplicação
+│   └── page.tsx            # Página inicial (Home)
+├── components/             # Componentes reutilizáveis (Sidebar, modais, tabelas, etc.)
+├── public/                 # Arquivos estáticos e imagens (ex.: logos, fotos da galeria)
+└── src/
+    ├── lib/                # Configuração do cliente Supabase, dados e utilitários
+    └── types/              # Tipagens e interfaces TypeScript
+```
+
+---
+
+## 🗄️ Estrutura de Dados (Supabase)
+
+- **`barbeiros`**: Cadastro dos profissionais (`id`, `nome`, entre outros campos configurados no banco).
+
+- **`agendamentos`**: Registros de horários marcados (`id`, `nome_cliente`, `email_cliente`, `barbeiro_id`, `data_hora`, entre outros campos).
+
+---
+
+## ⚙️ Como Rodar Localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+cd SEU-REPOSITORIO
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+### 3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto e preencha com as credenciais do seu projeto no Supabase (encontradas em **Project Settings > API**):
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anon_publica
+```
+
+> **Atenção:** Nunca envie o arquivo `.env.local` nem chaves reais para o GitHub ou para documentos compartilhados.
+
+### 4. Execute o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no navegador para visualizar a aplicação.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Como Fazer Deploy na Vercel
 
-## Learn More
+1. Envie o código atualizado para o seu repositório no **GitHub**.
 
-To learn more about Next.js, take a look at the following resources:
+2. Acesse o painel da **Vercel**, importe o repositório e abra **Settings > Environment Variables**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Cadastre as variáveis obrigatórias antes do build:
+   - `NEXT_PUBLIC_SUPABASE_URL` = `[https://seu-projeto.supabase.co](https://seu-projeto.supabase.co)`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `sua_chave_anon_publica`
+4. Selecione os ambientes (**Production**, **Preview**, **Development**) e salve.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Caso o build já tenha sido executado antes de adicionar as variáveis, acesse **Deployments** e clique em **Redeploy** no último deploy.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Observações de Manutenção
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- As variáveis `NEXT_PUBLIC_*` são expostas no bundle do cliente pelo Next.js, portanto devem conter apenas a URL do projeto e a chave `anon` pública (com políticas de segurança/RLS configuradas adequadamente no Supabase), nunca chaves administrativas privadas.
