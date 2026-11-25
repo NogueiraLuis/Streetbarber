@@ -1,7 +1,9 @@
 "use client";
+
 import Image from "next/image";
 import CardServicos from "@/components/servicos";
 import Link from "next/link";
+import Sidebar from "@/components/Sidebar";
 import { Limelight } from "next/font/google";
 import { servicos } from "@/src/data/listaCortes";
 
@@ -10,6 +12,11 @@ const limeLight = Limelight({
   subsets: ["latin"],
   variable: "--font-limelight",
 });
+
+const siteMenu = [
+  { label: "Sobre Nós", href: "/sobre", icon: "💈" },
+  { label: "administração", href: "/admin", icon: "👨‍💻" },
+];
 
 export default function HomePage() {
   return (
@@ -36,23 +43,27 @@ export default function HomePage() {
             />
           </div>
         </Link>
+
         <nav className="navegacao-principal">
-          <ul className={`lista-links ${limeLight.className}`}>
+          <Sidebar
+            menuItems={siteMenu}
+            subtitle="Menu"
+            footerLink={{
+              label: "Agendar Agora",
+              href: "/agendamento",
+              icon: "🗓️",
+            }}
+          />
+
+          <ul className="home-lista-link flex items-center justify-center text-white">
             <li>
-              <Link href="/sobre">Sobre Nós</Link>
+              <Link href="/sobre">Sobre</Link>
+            </li>
+            <li>
+              <Link href="/agendamento">Agende agora</Link>
             </li>
           </ul>
         </nav>
-
-        <div className="btn-nav">
-          <Link href="/admin" className="admin-link">
-            Admin
-          </Link>
-          <button className={`btn-agen ${limeLight.className}`}>
-            <Link href="/agendamento">Agendar corte</Link>
-          </button>
- 
-        </div>
       </div>
 
       <div className="sessoes">

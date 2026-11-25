@@ -37,45 +37,19 @@ html {
   z-index: 1000; /* Garante que o menu fique sempre por cima de tudo */
 }
 
-.btn-agen {
-  padding: 10px;
-  font-size: 85%;
-  border-radius: 10px;
-  background-color: #7f24ce;
-  color: #fff;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.btn-agen:hover {
-  background-color: #ae52ff;
-}
-
 .logo {
   border-radius: 100%;
   object-fit: cover; /* Garante que a imagem redonda não distorça */
 }
 
-.btn-nav {
-  display: flex;
-  gap: 2rem;
+@media (max-width: 786px) {
+.header{
+  justify-content: space-between;
 }
 
-.lista-links,
-.admin-link {
-  display: flex;
-  font-size: 100%;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 5px rgba(154, 6, 234, 0.355);
-  color: rgba(255, 247, 1, 0.738);
-  text-decoration: none;
-}
-
-.lista-links:hover {
-  color: #ffcc00;
+  .home-lista-link {
+    display: none;
+  }
 }
 
 /* ===== HOME ===== */
@@ -575,6 +549,7 @@ th {
 
 .admin-layout {
   display: flex;
+  flex-direction: row;
   min-height: 100vh;
   background-color: #121212;
   color: #ffffff;
@@ -583,13 +558,14 @@ th {
 
 .admin-page-content {
   flex: 1;
+  min-width: 0;
   padding: 1rem;
   overflow-y: auto;
-  width: 100%;
 }
 
 .sidebar {
   width: 220px;
+  min-width: 220px;
   background-color: #1a1a1a;
   border-right: 1px solid #2a2a2a;
   display: flex;
@@ -599,7 +575,10 @@ th {
   height: 100vh;
   position: sticky;
   top: 0;
-  transition: transform 0.3s ease-in-out;
+  left: 0;
+  transition:
+    transform 0.3s ease-in-out,
+    left 0.3s ease-in-out;
   z-index: 100;
 }
 
@@ -697,7 +676,8 @@ th {
   background-color: rgba(255, 77, 77, 0.1);
 }
 
-.mobile-menu-btn {
+.mobile-menu-btn,
+.sidebar {
   display: none;
 }
 
@@ -707,13 +687,19 @@ th {
   }
 
   .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: -100%;
     width: 250px;
     height: 100vh;
+    background-color: #1a1a1a;
+    padding: 1.5rem 1rem;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease-in-out;
+    z-index: 100;
   }
 
   .sidebar.open {
@@ -730,6 +716,9 @@ th {
     border-bottom: 1px solid #2a2a2a;
     font-weight: bold;
     font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+    z-index: 90;
   }
 
   .menu-toggle-icon {

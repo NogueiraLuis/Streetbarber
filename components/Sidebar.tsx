@@ -6,11 +6,31 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { supabase } from "@/src/lib/supabase";
 
-export default function Sidebar() {
+export interface MenuItem {
+  label: string;
+  href: string;
+  icon?: string;
+}
+
+interface SidebarProps {
+  menuItems: MenuItem[];
+  subtitle?: string;
+  showLogout?: boolean;
+  footerLink?: {
+    label: string;
+    href: string;
+    icon?: string;
+  };
+}
+
+export default function Sidebar({
+  menuItems,
+  subtitle = "StreetBarber",
+  showLogout = false,
+  footerLink,
+}: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
-
-  // Estado para controlar se a sidebar está aberta ou fechada no celular
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = async () => {
@@ -18,33 +38,20 @@ export default function Sidebar() {
     router.push("/login");
   };
 
-  const menuItems = [
-    { label: "Agendamentos", href: "/admin", icon: "📅" },
-    { label: "Barbeiros", href: "/admin/barbeiros", icon: "💈" },
-  ];
-
   return (
     <>
       {/* Botão Superior que aparece apenas no celular */}
       <div className="mobile-menu-btn">
-        <span>
-          <Image
-            src="/home/logo.webp"
-            width={100}
-            height={200}
-            alt="Logo da empresa"
-            className="logo"
-          />
-        </span>
         <button
           className="menu-toggle-icon"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Alternar menu"
         >
           {menuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Overlay escuro opcional para quando o menu estiver aberto no celular (fecha ao clicar fora) */}
+      {/* Overlay escuro para fechar ao clicar fora no celular */}
       {menuOpen && (
         <div
           style={{
@@ -57,7 +64,7 @@ export default function Sidebar() {
         />
       )}
 
-      {/* A Sidebar recebe a classe .open quando o estado for true */}
+      {/* Sidebar */}
       <aside className={`sidebar ${menuOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <span>
@@ -69,7 +76,7 @@ export default function Sidebar() {
               className="logo"
             />
           </span>
-          <span>Painel Admin</span>
+          {subtitle && <h2>{subtitle}</h2>}
         </div>
 
         <nav className="sidebar-nav">
@@ -81,9 +88,9 @@ export default function Sidebar() {
                   <Link
                     href={item.href}
                     className={`nav-link ${isActive ? "active" : ""}`}
-                    onClick={() => setMenuOpen(false)} // Fecha o menu ao clicar num link no celular
+                    onClick={() => setMenuOpen(false)}
                   >
-                    <span className="icon">{item.icon}</span>
+                    {item.icon && <span className="icon">{item.icon}</span>}
                     <span className="label">{item.label}</span>
                   </Link>
                 </li>
@@ -92,18 +99,26 @@ export default function Sidebar() {
           </ul>
         </nav>
 
-        <div className="sidebar-footer">
-          <Link
-            href="/"
-            className="btn-voltar"
-            onClick={() => setMenuOpen(false)}
-          >
-            🏠 Voltar ao Site
-          </Link>
-          <button onClick={handleLogout} className="btn-logout">
-            🚪 Sair
-          </button>
-        </div>
+        {(footerLink || showLogout) && (
+          <div className="sidebar-footer">
+            {footerLink && (
+              <Link
+                href={footerLink.href}
+                className="btn-voltar"
+                onClick={() => setMenuOpen(false)}
+              >
+                {footerLink.icon && <span>{footerLink.icon}</span>}{" "}
+                {footerLink.label}
+              </Link>
+            )}
+
+            {showLogout && (
+              <button onClick={handleLogout} className="btn-logout">
+                🚪 Sair
+              </button>
+            )}
+          </div>
+        )}
       </aside>
     </>
   );
