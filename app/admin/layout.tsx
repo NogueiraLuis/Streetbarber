@@ -5,12 +5,17 @@ const adminMenu = [
   { label: "Barbeiros", href: "/admin/barbeiros", icon: "💈" },
 ];
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="admin-layout">
       <Sidebar
         menuItems={adminMenu}
         subtitle="Painel Admin"
+        hideOnDesktop={false}
         showLogout={true}
         footerLink={{ label: "Voltar ao Site", href: "/", icon: "🏠" }}
       />

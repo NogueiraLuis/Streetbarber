@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -42,10 +36,26 @@ html {
   object-fit: cover; /* Garante que a imagem redonda não distorça */
 }
 
-@media (max-width: 786px) {
-.header{
-  justify-content: space-between;
+.agen-btn {
+  border: solid 1 #8407f9;
 }
+
+.sobre-btn {
+  border: solid 1 #e20b6f;
+}
+
+.sobre-btn:hover {
+  background-color: #fa1576;
+}
+
+.agen-btn:hover {
+  background-color: #8407f9;
+}
+
+@media (max-width: 786px) {
+  .header {
+    justify-content: space-between;
+  }
 
   .home-lista-link {
     display: none;
@@ -676,9 +686,12 @@ th {
   background-color: rgba(255, 77, 77, 0.1);
 }
 
-.mobile-menu-btn,
-.sidebar {
-  display: none;
+@media (min-width: 769px) {
+  .sidebar.hide-on-desktop,
+  .mobile-menu-btn,
+  .mobile-menu-btn.only-mobile {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -686,7 +699,8 @@ th {
     flex-direction: column;
   }
 
-  .sidebar {
+  .sidebar,
+  .sidebar.hide-on-desktop {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -702,18 +716,20 @@ th {
     z-index: 100;
   }
 
-  .sidebar.open {
+  .sidebar.open,
+  .sidebar.hide-on-desktop.open {
     left: 0;
   }
 
-  .mobile-menu-btn {
+  .mobile-menu-btn,
+  .mobile-menu-btn.only-mobile {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #1a1a1a;
+    background-color: #000000;
     padding: 1rem;
     color: #ffc107;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid #000000;
     font-weight: bold;
     font-size: 1.1rem;
     position: sticky;

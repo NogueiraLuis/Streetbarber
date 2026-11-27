@@ -16,6 +16,7 @@ interface SidebarProps {
   menuItems: MenuItem[];
   subtitle?: string;
   showLogout?: boolean;
+  hideOnDesktop?: boolean;
   footerLink?: {
     label: string;
     href: string;
@@ -27,6 +28,7 @@ export default function Sidebar({
   menuItems,
   subtitle = "StreetBarber",
   showLogout = false,
+  hideOnDesktop = false,
   footerLink,
 }: SidebarProps) {
   const pathname = usePathname();
@@ -41,7 +43,7 @@ export default function Sidebar({
   return (
     <>
       {/* Botão Superior que aparece apenas no celular */}
-      <div className="mobile-menu-btn">
+      <div className={`mobile-menu-btn ${hideOnDesktop ? "only-mobile" : ""}`}>
         <button
           className="menu-toggle-icon"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -65,7 +67,7 @@ export default function Sidebar({
       )}
 
       {/* Sidebar */}
-      <aside className={`sidebar ${menuOpen ? "open" : ""}`}>
+      <aside className={`sidebar ${menuOpen ? "open" : ""} ${hideOnDesktop ? "hide-on-desktop" : ""}`}>
         <div className="sidebar-header">
           <span>
             <Image

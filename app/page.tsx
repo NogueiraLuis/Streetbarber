@@ -47,6 +47,7 @@ export default function HomePage() {
         <nav className="navegacao-principal">
           <Sidebar
             menuItems={siteMenu}
+            hideOnDesktop={true}
             subtitle="Menu"
             footerLink={{
               label: "Agendar Agora",
@@ -55,12 +56,12 @@ export default function HomePage() {
             }}
           />
 
-          <ul className="home-lista-link flex items-center justify-center text-white">
+          <ul className={`home-lista-link ${limeLight.className} flex items-center gap-15 justify-center text-white`}>
             <li>
-              <Link href="/sobre">Sobre</Link>
+              <Link href="/sobre" className="sobre-btn rounded-sm px-5 py-2">Sobre Nós</Link>
             </li>
             <li>
-              <Link href="/agendamento">Agende agora</Link>
+              <Link href="/agendamento" className="agen-btn rounded-sm px-5 py-2">Agende agora</Link>
             </li>
           </ul>
         </nav>
@@ -208,6 +209,9 @@ export default function HomePage() {
                 <p>📍 Rua Exemplo, 123 — Centro</p>
                 <p>📱 (00) 99999-9999</p>
                 <p>📸 @streetbarbershop</p>
+                <p>
+                  <Link href="/admin">Admin🔒</Link>
+                </p>
               </div>
             </div>
 
