@@ -4,7 +4,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-image:
-    linear-gradient(rgba(18, 18, 18, 0.462), rgba(0, 0, 0, 0.85)),
+    linear-gradient(rgba(18, 18, 18, 0.192), rgba(0, 0, 0, 0.344)),
     url("../public/home/background/mural-back.webp");
   background-position: center;
   background-size: cover;
@@ -22,7 +22,7 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.901);
+  background-color: rgba(0, 0, 0, 0.784);
   position: fixed;
   top: 0;
   left: 0;
@@ -88,6 +88,17 @@ html {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .logo-home{
+    width: 90%;
+    margin-top: 3rem;
+  }
+
+  .slogan{
+    width: 90%;
+  }
 }
 
 /* ===== SERVICOS ===== */
@@ -183,6 +194,12 @@ html {
   gap: 3rem 0;
 }
 
+@media (max-width: 768px) {
+  .barbeiros{
+    width: 90%;
+  }
+}
+
 /* ===== UNIDADE ===== */
 
 .unidade {
@@ -216,7 +233,7 @@ html {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  padding: 0 2rem;
+  padding: 0 1rem;
   height: 100%;
   min-width: 100%;
 }
@@ -235,6 +252,20 @@ html {
 
 .sbr-nos-btn {
   padding: 0.5rem;
+}
+
+.voltar-home{
+  background-color:  #e20b6f;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .text{
+    font-size: 1.2rem;
+    width: 100%;
+  }
 }
 
 /* ===== AGENDAMENTO ===== */

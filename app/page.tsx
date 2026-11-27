@@ -35,7 +35,7 @@ export default function HomePage() {
         >
           <div className="logo" style={{ width: "4.5rem", cursor: "pointer" }}>
             <Image
-              src="/home/logo.webp"
+              src="/home/logo-header.webp"
               width={200}
               height={300}
               alt="Logo da empresa"
@@ -68,8 +68,10 @@ export default function HomePage() {
       </div>
 
       <div className="sessoes">
+
+        {/* ==== HOME ==== */}
         <section className="home">
-          <div>
+          <div className="logo-home">
             <Image
               src="/home/logo.webp"
               width={500}
@@ -89,6 +91,7 @@ export default function HomePage() {
           </span>
         </section>
 
+        {/* ==== SERVICOS ==== */}
         <section className="servicos">
           <div>
             <Image
@@ -113,6 +116,8 @@ export default function HomePage() {
             </section>
           </div>
         </section>
+
+        {/* ==== GALERIA ==== */}
         <section className="galeria">
           <div>
             <Image
@@ -154,6 +159,8 @@ export default function HomePage() {
             />
           </section>
         </section>
+
+        {/* ==== EQUIPE ==== */}
         <section className="equipe">
           <div>
             <Image
@@ -183,6 +190,7 @@ export default function HomePage() {
             />
           </div>
 
+          {/* ==== UNIDADE ==== */}
           <section className="unidade-local-img">
             <Image
               className="local-img"
@@ -203,7 +211,7 @@ export default function HomePage() {
                 <h3 className="footer-title">STREET BARBERSHOP</h3>
               </div>
 
-              {/* Coluna 3: Contacto */}
+              {/* ==== FOOTER ==== */}
               <div className="footer-col">
                 <h4>Contato</h4>
                 <p>📍 Rua Exemplo, 123 — Centro</p>
@@ -215,14 +223,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Linha Inferior */}
             <div className="footer-bottom">
               <p>
                 &copy; {new Date().getFullYear()} Street Barbershop. Todos os
                 direitos reservados.
               </p>
-
-              {/* Link discreto do Admin */}
             </div>
           </footer>
         </section>

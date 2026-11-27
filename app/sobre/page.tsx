@@ -7,7 +7,6 @@ const limeLight = Limelight({
   variable: "--font-limelight",
 });
 
-
 export default function SobrePage() {
   return (
     <main className="sobre-hero">
@@ -22,30 +21,26 @@ export default function SobrePage() {
       <div className="sobre-conteudo">
         <section className="sobre-text">
           <p className="text">
-            Fundada em 1997, a Street Barbershop tem a função de ser uma
-            barbearia moderna e profissional especializada em cortes masculinos,
-            com trabalho na área do visagismo masculino e com estilo de arte
-            urbana, mantendo a tradição de entregar sempre o melhor atendimento
-            e serviço. Oferecemos um ambiente exclusivo ao público, contendo
-            área kids, uma área especial para pessoas com deficiências e uma
-            área de espera contendo uma máquina de vendas com snacks,
-            refrigerantes, etc., a fim de ser um local diferenciado não só pelo
-            conforto e atendimento personalizado, mas por oferecer uma melhor
-            experiência para pessoas com deficiências, que na maioria dos casos
-            não são tratadas como deveriam e muitas vezes são tratadas de forma
-            desigual e não são atendidas. Nossos barbeiros são treinados para
-            oferecer uma experiência incrível, com barboterapia com toalhas
-            quentes e um acabamento impecável. Devolvendo a sua autoestima e
-            confiança. Aqui não aceitamos cliente insatisfeito, não é à toa que
-            somos a barbearia de Uberlândia e região com melhor índice de
-            avaliação no Google.
+            Fundada em 1997, a Street Barbershop une tradição, modernidade e
+            arte urbana para oferecer serviços especializados em cortes
+            masculinos e visagismo. Nosso espaço conta com área kids, ambiente
+            acessível para pessoas com deficiência e sala de espera com snacks e
+            bebidas, garantindo conforto e inclusão para todos. Nossa equipe é
+            capacitada para proporcionar uma experiência diferenciada, com
+            serviços como barboterapia com toalhas quentes e acabamentos
+            impecáveis. Mais do que cuidar da aparência, buscamos elevar a
+            autoestima e a confiança de cada cliente. Nosso compromisso com a
+            qualidade e a satisfação nos destaca entre as barbearias de
+            Uberlândia e região.
           </p>
         </section>
         <span className="sbr-nos-btn">
           <button type="button">
-            <Link className={`lista-links ${limeLight.className}`} href="/">Voltar</Link>
+            <Link className={`voltar-home ${limeLight.className}`} href="/">
+              Voltar
+            </Link>
           </button>
-          </span>
+        </span>
       </div>
     </main>
   );
